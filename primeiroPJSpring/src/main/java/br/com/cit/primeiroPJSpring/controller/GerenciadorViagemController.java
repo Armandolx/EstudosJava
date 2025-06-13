@@ -50,12 +50,12 @@ public class GerenciadorViagemController {
 			return ResponseEntity.badRequest().body(response);
 		}
 
-		Viagem viagemSalva = this.viagemService.salvar(viagemDto);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(viagemDto.getId())
-				.toUri();
-		response.setData(viagemSalva);
-		return ResponseEntity.created(location).body(response);
-	}
+               Viagem viagemSalva = this.viagemService.salvar(viagemDto);
+               URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(viagemSalva.getId())
+                               .toUri();
+               response.setData(viagemSalva);
+               return ResponseEntity.created(location).body(response);
+       }
 
 	@GetMapping
 	public ResponseEntity<List<Viagem>> listar() { //Um método é encapsulado no response e outro não, isso altera como é emitido o retorno
